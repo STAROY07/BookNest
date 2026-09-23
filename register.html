@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Registration - BookNest</title>
+  
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+</head>
+<body>
+
+  <!-- Minimal Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.svg" alt="BookNest Logo" />
+        <span>BookNest</span>
+      </a>
+      <a href="login.html" class="btn btn-ghost btn-sm">Already have an account?</a>
+    </div>
+  </header>
+
+  <!-- Register Main -->
+  <main class="auth-wrapper">
+    <div class="auth-card" style="max-width: 540px;">
+      <div class="auth-header">
+        <div class="badge badge-primary mb-2">Create Student Account</div>
+        <h1>Join BookNest</h1>
+        <p>Start buying, renting, and trading textbooks with peers</p>
+      </div>
+
+      <form id="register-form">
+        <div class="grid grid-cols-2 gap-3">
+          <div class="form-group">
+            <label class="form-label">Full Name <span class="required">*</span></label>
+            <input type="text" id="reg-name" class="form-control" placeholder="e.g. Rahul Sharma" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address <span class="required">*</span></label>
+            <input type="email" id="reg-email" class="form-control" placeholder="student@college.edu" required />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="form-group">
+            <label class="form-label">Password <span class="required">*</span></label>
+            <input type="password" id="reg-password" class="form-control" placeholder="Min. 6 characters" minlength="6" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirm Password <span class="required">*</span></label>
+            <input type="password" id="reg-confirm-password" class="form-control" placeholder="Re-type password" minlength="6" required />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" id="reg-phone" class="form-control" placeholder="+91 9876543210" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">College / Institute</label>
+            <input type="text" id="reg-college" class="form-control" placeholder="e.g. National Institute of Tech" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="form-group">
+            <label class="form-label">Course / Major</label>
+            <input type="text" id="reg-course" class="form-control" placeholder="e.g. B.Tech Computer Science" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Current Academic Year</label>
+            <select id="reg-year" class="form-control">
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year" selected>3rd Year</option>
+              <option value="4th Year">4th Year</option>
+              <option value="Postgraduate">Postgraduate</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" id="btn-register" class="btn btn-primary btn-block btn-lg mt-3 mb-3">
+          Create Account
+        </button>
+
+        <div class="text-center" style="font-size: 0.9rem; color: var(--color-text-muted);">
+          Already registered? <a href="login.html" style="font-weight: 700; color: var(--color-primary);">Sign in here</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/config/firebase-config.js"></script>
+  <script src="js/services/seed-service.js"></script>
+  <script src="js/config/data-store.js"></script>
+  <script src="js/auth/auth.js"></script>
+  <script src="js/services/cart-service.js"></script>
+  <script src="js/utils/ui.js"></script>
+  <script src="js/utils/router.js"></script>
+
+  <script>
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const password = document.getElementById('reg-password').value;
+      const confirmPassword = document.getElementById('reg-confirm-password').value;
+
+      if (password !== confirmPassword) {
+        BookNestUI.showToast('Passwords do not match. Please verify.', 'error');
+        return;
+      }
+
+      const btn = document.getElementById('btn-register');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner" style="width:16px;height:16px;border-width:2px;"></span> Creating Account...';
+
+      try {
+        const formData = {
+          name: document.getElementById('reg-name').value.trim(),
+          email: document.getElementById('reg-email').value.trim(),
+          password: password,
+          phone: document.getElementById('reg-phone').value.trim(),
+          college: document.getElementById('reg-college').value.trim(),
+          course: document.getElementById('reg-course').value.trim(),
+          year: document.getElementById('reg-year').value
+        };
+
+        const newUser = await BookNestAuth.register(formData);
+        BookNestUI.showToast(`Account created! Welcome, ${newUser.name}!`, 'success');
+
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1000);
+
+      } catch (err) {
+        BookNestUI.showToast(err.message || 'Registration failed.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Create Account';
+      }
+    });
+  </script>
+</body>
+</html>

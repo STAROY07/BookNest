@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reset Email Sent - BookNest</title>
+  
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+</head>
+<body>
+
+  <!-- Minimal Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.svg" alt="BookNest Logo" />
+        <span>BookNest</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Reset Success Main -->
+  <main class="auth-wrapper">
+    <div class="auth-card text-center">
+      <div style="width: 64px; height: 64px; border-radius: var(--radius-pill); background: var(--color-success-bg); color: var(--color-success); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+
+      <h1 style="font-size: 1.75rem; margin-bottom: 0.75rem;">Password Reset Sent</h1>
+      <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.75rem;">
+        We have dispatched secure password reset instructions to <strong id="user-email-target" style="color: var(--color-text-main);">your registered email</strong>. Please check your inbox and spam folder.
+      </p>
+
+      <a href="login.html" class="btn btn-primary btn-block btn-lg">
+        Return to Login
+      </a>
+    </div>
+  </main>
+
+  <script>
+    const email = sessionStorage.getItem('booknest_reset_email');
+    if (email) {
+      document.getElementById('user-email-target').textContent = email;
+    }
+  </script>
+</body>
+</html>

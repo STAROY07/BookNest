@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Textbook - Admin - BookNest</title>
+  
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+  <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg" />
+</head>
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="/index.html" class="d-flex align-center gap-2" style="text-decoration: none;">
+          <img src="/assets/images/logo.svg" alt="BookNest Logo" style="height: 34px;" />
+          <div>
+            <div class="brand-title" style="font-size: 1.2rem; font-weight: 800; color: #fff;">BookNest</div>
+            <div style="font-size: 0.7rem; color: #a7f3d0; text-transform: uppercase; font-weight: 600;">Campus Admin</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="admin-nav">
+        <a href="/admin/index.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+        <a href="/admin/books.html" class="admin-nav-item active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          Books Catalog
+        </a>
+        <a href="/admin/add-book.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          Add New Book
+        </a>
+        <a href="/admin/categories.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+          Categories
+        </a>
+        <a href="/admin/orders.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          Orders
+        </a>
+        <a href="/admin/rentals.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Rentals Tracker
+        </a>
+        <a href="/admin/listings.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          User Listings
+        </a>
+        <a href="/admin/users.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Users
+        </a>
+        <a href="/admin/reports.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          Reports & Charts
+        </a>
+        <a href="/admin/settings.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Settings & Seed
+        </a>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <a href="/index.html" class="btn btn-outline btn-block btn-sm" style="color: #a7f3d0; border-color: rgba(255,255,255,0.2);">
+          ← View Public Store
+        </a>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div style="font-weight: 700; font-size: 1.15rem;">Edit Textbook Information</div>
+        <a href="/admin/books.html" class="btn btn-outline btn-sm">Cancel</a>
+      </header>
+
+      <main class="admin-body">
+        <div class="admin-card" style="max-width: 860px; margin: 0 auto;">
+          <div class="admin-card-header">
+            <div class="admin-card-title" id="edit-header-title">Edit Textbook Specifications</div>
+            <span class="badge badge-primary" id="edit-book-id-badge">ID: ...</span>
+          </div>
+          <div class="admin-card-body">
+            <form id="admin-edit-book-form">
+              
+              <!-- Cover Image Section -->
+              <div class="form-group mb-4 p-3" style="background: var(--color-bg-alt); border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+                <label class="form-label" style="font-weight: 700; margin-bottom: 0.5rem;">Book Cover Photo</label>
+                <div class="d-flex align-center gap-4 flex-wrap">
+                  <div style="text-align: center;">
+                    <img id="current-cover-img" src="" alt="Book Cover" style="width: 90px; height: 120px; object-fit: cover; border-radius: var(--radius-xs); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);" />
+                    <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.25rem;">Current Photo</div>
+                  </div>
+                  <div style="flex-grow: 1; min-width: 240px;">
+                    <div class="file-dropzone" style="padding: 1.25rem; text-align: center; cursor: pointer;" onclick="document.getElementById('edit-file-input').click()">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mb-1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                      <input type="file" id="edit-file-input" accept="image/jpeg,image/png,image/webp" />
+                      <div style="font-weight: 600; font-size: 0.9rem;">Click to upload a new cover photo</div>
+                      <div style="font-size: 0.75rem; color: var(--color-text-muted);">Supports JPG, PNG, WEBP (Max 5MB)</div>
+                    </div>
+                    <div id="new-cover-preview" class="mt-2" style="display: none;">
+                      <span class="badge badge-success" style="font-size: 0.75rem;">New Image Selected for Upload</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Book Title <span class="required">*</span></label>
+                <input type="text" id="edit-title" class="form-control" required />
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div class="form-group">
+                  <label class="form-label">Author(s) <span class="required">*</span></label>
+                  <input type="text" id="edit-author" class="form-control" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">ISBN Number</label>
+                  <input type="text" id="edit-isbn" class="form-control" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-3 gap-3">
+                <div class="form-group">
+                  <label class="form-label">Category <span class="required">*</span></label>
+                  <select id="edit-category" class="form-control" required></select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Subject / Department</label>
+                  <input type="text" id="edit-subject" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Semester</label>
+                  <select id="edit-semester" class="form-control">
+                    <option value="All Semesters">All Semesters</option>
+                    <option value="Semester 1">Semester 1</option>
+                    <option value="Semester 2">Semester 2</option>
+                    <option value="Semester 3">Semester 3</option>
+                    <option value="Semester 4">Semester 4</option>
+                    <option value="Semester 5">Semester 5</option>
+                    <option value="Semester 6">Semester 6</option>
+                    <option value="Semester 7">Semester 7</option>
+                    <option value="Semester 8">Semester 8</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Book Condition</label>
+                <select id="edit-condition" class="form-control">
+                  <option value="Brand New">Brand New</option>
+                  <option value="Like New">Like New</option>
+                  <option value="Very Good">Very Good</option>
+                  <option value="Good">Good</option>
+                  <option value="Fair">Fair</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Detailed Description / Syllabus Info</label>
+                <textarea id="edit-description" class="form-control" rows="3"></textarea>
+              </div>
+
+              <div class="grid grid-cols-4 gap-3">
+                <div class="form-group">
+                  <label class="form-label">Purchase Price (₹) <span class="required">*</span></label>
+                  <input type="number" id="edit-price" class="form-control" min="0" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Rental Price (₹)</label>
+                  <input type="number" id="edit-rental-price" class="form-control" min="0" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Total Stock <span class="required">*</span></label>
+                  <input type="number" id="edit-stock" class="form-control" min="0" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Available Copies <span class="required">*</span></label>
+                  <input type="number" id="edit-available-stock" class="form-control" min="0" required />
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label class="checkbox-container">
+                  <input type="checkbox" id="edit-rent-enabled" />
+                  <span class="custom-checkbox"></span>
+                  <span style="font-weight: 600;">Enable Student Semester Rental for this title</span>
+                </label>
+              </div>
+
+              <div class="d-flex justify-end gap-2 pt-3" style="border-top: 1px solid var(--color-border);">
+                <a href="/admin/books.html" class="btn btn-ghost">Cancel</a>
+                <button type="submit" id="btn-save-edit" class="btn btn-primary btn-lg">Update Book & Save Changes</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/config/firebase-config.js"></script>
+  <script src="/js/services/seed-service.js"></script>
+  <script src="/js/config/data-store.js"></script>
+  <script src="/js/auth/auth.js"></script>
+  <script src="/js/services/storage-service.js"></script>
+  <script src="/js/utils/ui.js"></script>
+  <script src="/js/utils/router.js"></script>
+
+  <script>
+    let currentBookId = null;
+    let existingBook = null;
+    let newCoverFile = null;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (!BookNestAuth.requireAdmin('/login.html')) return;
+
+      currentBookId = BookNestRouter.getParam('id');
+      if (!currentBookId) {
+        const books = await BookNestDataStore.getBooks({ includeAllStatus: true });
+        if (books && books.length > 0) {
+          currentBookId = books[0].id;
+        } else {
+          BookNestUI.showToast('No books available to edit.', 'warning');
+          return;
+        }
+      }
+
+      const categories = await BookNestDataStore.getCategories();
+      const select = document.getElementById('edit-category');
+      select.innerHTML = categories.map(c => `<option value="${c.id}" data-name="${c.name}">${c.name}</option>`).join('');
+
+      existingBook = await BookNestDataStore.getBookById(currentBookId);
+      if (!existingBook) {
+        const all = await BookNestDataStore.getBooks({ includeAllStatus: true });
+        existingBook = all.find(b => String(b.id) === String(currentBookId)) || all[0];
+      }
+
+      if (!existingBook) {
+        BookNestUI.showToast('Book details could not be found.', 'error');
+        return;
+      }
+
+      // Populate Form Fields
+      document.getElementById('edit-header-title').textContent = `Editing: ${existingBook.title}`;
+      document.getElementById('edit-book-id-badge').textContent = `ID: #${existingBook.id}`;
+      
+      const currentCover = existingBook.images && existingBook.images[0] ? existingBook.images[0] : BookNestUI.getBookPlaceholderSvg(existingBook.title);
+      document.getElementById('current-cover-img').src = currentCover;
+
+      document.getElementById('edit-title').value = existingBook.title;
+      document.getElementById('edit-author').value = existingBook.author;
+      document.getElementById('edit-isbn').value = existingBook.isbn || '';
+      document.getElementById('edit-category').value = existingBook.categoryId;
+      document.getElementById('edit-subject').value = existingBook.subject || '';
+      document.getElementById('edit-semester').value = existingBook.semester || 'All Semesters';
+      document.getElementById('edit-condition').value = existingBook.condition || 'Like New';
+      document.getElementById('edit-description').value = existingBook.description || '';
+      document.getElementById('edit-price').value = existingBook.price;
+      document.getElementById('edit-rental-price').value = existingBook.rentalPrice || 0;
+      document.getElementById('edit-stock').value = existingBook.stock;
+      document.getElementById('edit-available-stock').value = existingBook.availableStock !== undefined ? existingBook.availableStock : existingBook.stock;
+      document.getElementById('edit-rent-enabled').checked = existingBook.rentEnabled || false;
+
+      // Handle Cover Photo Selection
+      document.getElementById('edit-file-input').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          try {
+            BookNestStorage.validateFile(file);
+            newCoverFile = file;
+            document.getElementById('current-cover-img').src = URL.createObjectURL(file);
+            document.getElementById('new-cover-preview').style.display = 'block';
+            BookNestUI.showToast('New photo selected! Click Save to apply.', 'info');
+          } catch (err) {
+            BookNestUI.showToast(err.message, 'error');
+          }
+        }
+      });
+
+      // Handle Submit
+      document.getElementById('admin-edit-book-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('btn-save-edit');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner" style="width:16px;height:16px;border-width:2px;"></span> Updating Book...';
+
+        try {
+          let updatedImages = existingBook.images || [];
+          if (newCoverFile) {
+            const uploadedUrl = await BookNestStorage.uploadImage(newCoverFile, 'books');
+            updatedImages = [uploadedUrl];
+          }
+
+          const catSelect = document.getElementById('edit-category');
+          const updates = {
+            title: document.getElementById('edit-title').value.trim(),
+            author: document.getElementById('edit-author').value.trim(),
+            isbn: document.getElementById('edit-isbn').value.trim(),
+            categoryId: catSelect.value,
+            categoryName: catSelect.options[catSelect.selectedIndex].getAttribute('data-name'),
+            subject: document.getElementById('edit-subject').value.trim(),
+            semester: document.getElementById('edit-semester').value,
+            condition: document.getElementById('edit-condition').value,
+            description: document.getElementById('edit-description').value.trim(),
+            price: Number(document.getElementById('edit-price').value),
+            rentalPrice: Number(document.getElementById('edit-rental-price').value) || 0,
+            stock: Number(document.getElementById('edit-stock').value),
+            availableStock: Number(document.getElementById('edit-available-stock').value),
+            rentEnabled: document.getElementById('edit-rent-enabled').checked,
+            images: updatedImages
+          };
+
+          await BookNestDataStore.updateBook(currentBookId, updates);
+          BookNestUI.showToast('Textbook updated successfully!', 'success');
+
+          setTimeout(() => {
+            window.location.href = '/admin/books.html';
+          }, 600);
+
+        } catch (err) {
+          BookNestUI.showToast(err.message || 'Failed to update book.', 'error');
+          btn.disabled = false;
+          btn.textContent = 'Update Book & Save Changes';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - BookNest</title>
+  
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+</head>
+<body>
+
+  <!-- Minimal Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.svg" alt="BookNest Logo" />
+        <span>BookNest</span>
+      </a>
+      <a href="browse-books.html" class="btn btn-ghost btn-sm">Explore Catalog</a>
+    </div>
+  </header>
+
+  <!-- Login Main -->
+  <main class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="badge badge-primary mb-2">Student & Faculty Portal</div>
+        <h1>Welcome Back</h1>
+        <p>Sign in to your BookNest academic account</p>
+      </div>
+
+      <!-- Quick Demo Credentials Fill -->
+      <div class="demo-credentials-box">
+        <div style="font-weight: 700; color: var(--color-primary-dark); margin-bottom: 0.35rem;">
+          Quick Demo Credentials (One-Click):
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="quickFill('student')">
+            Fill Student Demo
+          </button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="quickFill('admin')">
+            Fill Admin Demo
+          </button>
+        </div>
+      </div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label">Email Address <span class="required">*</span></label>
+          <div class="input-with-icon">
+            <span class="input-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </span>
+            <input type="email" id="login-email" class="form-control" placeholder="student@college.edu" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="d-flex justify-between align-center">
+            <label class="form-label">Password <span class="required">*</span></label>
+            <a href="forgot-password.html" style="font-size: 0.8rem; color: var(--color-primary);">Forgot Password?</a>
+          </div>
+          <div class="input-with-icon">
+            <span class="input-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </span>
+            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required />
+          </div>
+        </div>
+
+        <div class="form-group mb-4">
+          <label class="checkbox-label">
+            <input type="checkbox" id="login-remember" checked />
+            <span style="font-size: 0.85rem;">Keep me signed in on this device</span>
+          </label>
+        </div>
+
+        <button type="submit" id="btn-login" class="btn btn-primary btn-block btn-lg mb-3">
+          Sign In
+        </button>
+
+        <div class="text-center" style="font-size: 0.9rem; color: var(--color-text-muted);">
+          Don't have an account? <a href="register.html" style="font-weight: 700; color: var(--color-primary);">Register here</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/config/firebase-config.js"></script>
+  <script src="js/services/seed-service.js"></script>
+  <script src="js/config/data-store.js"></script>
+  <script src="js/auth/auth.js"></script>
+  <script src="js/services/cart-service.js"></script>
+  <script src="js/utils/ui.js"></script>
+  <script src="js/utils/router.js"></script>
+
+  <script>
+    function quickFill(role) {
+      if (role === 'student') {
+        document.getElementById('login-email').value = 'alex.student@college.edu';
+        document.getElementById('login-password').value = 'Student@1234';
+      } else if (role === 'admin') {
+        document.getElementById('login-email').value = 'admin@booknest.edu';
+        document.getElementById('login-password').value = 'Admin@1234';
+      }
+    }
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value;
+      const btn = document.getElementById('btn-login');
+
+      try {
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner" style="width:16px;height:16px;border-width:2px;"></span> Authenticating...';
+
+        const user = await BookNestAuth.login(email, password);
+
+        BookNestUI.showToast(`Welcome back, ${user.name}!`, 'success');
+
+        const redirect = BookNestRouter.getParam('redirect');
+        setTimeout(() => {
+          if (redirect) {
+            window.location.href = decodeURIComponent(redirect);
+          } else if (user.role === 'admin') {
+            window.location.href = 'admin/index.html';
+          } else {
+            window.location.href = 'index.html';
+          }
+        }, 800);
+
+      } catch (err) {
+        BookNestUI.showToast(err.message || 'Login failed. Please check credentials.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Sign In';
+      }
+    });
+  </script>
+</body>
+</html>

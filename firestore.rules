@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper function to check if user is owner of the document
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Helper function to check if user has admin role
+    function isAdmin() {
+      return isAuthenticated() && 
+        (request.auth.token.role == 'admin' || 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin');
+    }
+
+    // Users Collection: Users can read/write their own profile; Admin can read all
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update, delete: if isOwner(userId) || isAdmin();
+    }
+
+    // Books Collection: Public can read approved books; Admin has full write access
+    match /books/{bookId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Categories Collection: Public read; Admin write
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Listings Collection: Public can read approved listings; Students can create and edit their own; Admins can moderate
+    match /listings/{listingId} {
+      allow read: if true;
+      allow create: if isAuthenticated();
+      allow update: if (isAuthenticated() && resource.data.sellerId == request.auth.uid) || isAdmin();
+      allow delete: if (isAuthenticated() && resource.data.sellerId == request.auth.uid) || isAdmin();
+    }
+
+    // Cart Collection: Only the owner can access their cart
+    match /cart/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // Orders Collection: Students can create and read their own orders; Admins can read/update all orders
+    match /orders/{orderId} {
+      allow create: if isAuthenticated();
+      allow read: if isAuthenticated() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow update, delete: if isAdmin();
+    }
+
+    // Rentals Collection: Students can read their own rentals; Admins can read and update rental status
+    match /rentals/{rentalId} {
+      allow create: if isAuthenticated();
+      allow read: if isAuthenticated() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow update, delete: if isAdmin();
+    }
+  }
+}

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookNest - Student Book Marketplace & Rental Platform</title>
+  <meta name="description" content="Buy, rent, and sell used college textbooks directly within your campus community. Affordable, fast, and eco-friendly." />
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.svg" alt="BookNest Logo" />
+        <span>BookNest</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="browse-books.html" class="nav-link">Browse Books</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="sell-book.html" class="nav-link">Sell a Book</a></li>
+          <li><a href="orders.html" class="nav-link">My Orders</a></li>
+          <li><a href="rentals.html" class="nav-link">My Rentals</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <a href="browse-books.html" class="icon-btn" aria-label="Search catalog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </a>
+        <a href="cart.html" class="icon-btn" aria-label="Shopping Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="badge-count cart-count-badge" style="display: none;">0</span>
+        </a>
+        
+        <!-- User Auth Action (Dynamic) -->
+        <div id="nav-auth-actions" class="d-flex align-center gap-2">
+          <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+          <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-nav-toggle" aria-label="Open menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay & Drawer -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-nav-drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.svg" alt="BookNest Logo" />
+        <span>BookNest</span>
+      </a>
+      <button class="modal-close-btn drawer-close-btn" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html" class="drawer-link active">Home</a></li>
+      <li><a href="browse-books.html" class="drawer-link">Browse Books</a></li>
+      <li><a href="categories.html" class="drawer-link">Categories</a></li>
+      <li><a href="sell-book.html" class="drawer-link">Sell a Book</a></li>
+      <li><a href="orders.html" class="drawer-link">My Orders</a></li>
+      <li><a href="rentals.html" class="drawer-link">My Rentals</a></li>
+    </ul>
+    <div id="drawer-auth-actions" class="mt-4 pt-3" style="border-top: 1px solid var(--color-border);">
+      <!-- Injected by app.js -->
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Verified Campus Marketplace
+          </div>
+          <h1 class="hero-title">
+            Find Your Next <span>Academic Book</span> with Ease
+          </h1>
+          <p class="hero-desc">
+            BookNest connects college students to buy, rent, and resell course textbooks, exam guides, and engineering notes at a fraction of the retail cost.
+          </p>
+
+          <!-- Search Bar -->
+          <form class="hero-search-box" onsubmit="event.preventDefault(); BookNestApp.handleGlobalSearch('hero-search');">
+            <input type="text" id="hero-search" class="hero-search-input" placeholder="Search by title, author, subject, or ISBN..." />
+            <button type="submit" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Search
+            </button>
+          </form>
+
+          <!-- Primary CTAs -->
+          <div class="d-flex align-center gap-3 flex-wrap">
+            <a href="browse-books.html" class="btn btn-primary btn-lg">Browse Books</a>
+            <a href="sell-book.html" class="btn btn-outline btn-lg">Sell Your Book</a>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="hero-stats">
+            <div>
+              <div class="hero-stat-number" id="stat-books-count">500+</div>
+              <div class="hero-stat-label">Textbooks Available</div>
+            </div>
+            <div>
+              <div class="hero-stat-number">30 Days</div>
+              <div class="hero-stat-label">Flexible Rental Period</div>
+            </div>
+            <div>
+              <div class="hero-stat-number">100%</div>
+              <div class="hero-stat-label">Verified Listings</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Image Card Stack -->
+        <div class="hero-image-wrapper">
+          <div class="hero-card-stack">
+            <div class="d-flex align-center justify-between mb-3">
+              <span class="badge badge-primary">Featured Textbook</span>
+              <span class="badge badge-success">In Stock</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Data Structures & Algorithms" style="border-radius: var(--radius-md); height: 260px; width: 100%; object-fit: cover;" />
+            <div class="mt-3">
+              <div class="book-category-tag">Computer Science</div>
+              <h4 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Data Structures and Algorithms Made Easy</h4>
+              <p style="font-size: 0.85rem; margin-bottom: 0.75rem;">Narasimha Karumanchi</p>
+              <div class="d-flex align-center justify-between pt-2" style="border-top: 1px solid var(--color-border);">
+                <div>
+                  <span style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary);">₹499</span>
+                  <span style="font-size: 0.8rem; color: var(--color-text-muted);"> (Rent ₹89/mo)</span>
+                </div>
+                <a href="book-details.html?id=book-1" class="btn btn-primary btn-sm">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Categories Section -->
+    <section class="section-py bg-white">
+      <div class="container">
+        <div class="d-flex align-center justify-between mb-4 flex-wrap gap-2">
+          <div>
+            <h2>Popular Categories</h2>
+            <p>Explore academic textbooks across disciplines</p>
+          </div>
+          <a href="categories.html" class="btn btn-ghost">
+            View All Categories
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <div class="category-tile-grid" id="home-categories-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Books Section -->
+    <section class="section-py" style="background-color: var(--color-bg);">
+      <div class="container">
+        <div class="d-flex align-center justify-between mb-4 flex-wrap gap-2">
+          <div>
+            <h2>Featured Textbooks</h2>
+            <p>Hand-picked, high-demand university reference books</p>
+          </div>
+          <a href="browse-books.html" class="btn btn-outline btn-sm">Explore All</a>
+        </div>
+
+        <div class="grid grid-cols-4 gap-3" id="home-featured-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Books Available for Rent Section -->
+    <section class="section-py bg-white">
+      <div class="container">
+        <div class="d-flex align-center justify-between mb-4 flex-wrap gap-2">
+          <div>
+            <h2>Available for Rent</h2>
+            <p>Save money by renting textbooks per semester</p>
+          </div>
+          <a href="browse-books.html?rent=true" class="btn btn-outline btn-sm">View Rental Catalog</a>
+        </div>
+
+        <div class="grid grid-cols-4 gap-3" id="home-rent-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- How BookNest Works Section -->
+    <section class="section-py" style="background: radial-gradient(circle at center, #f4ebd9 0%, #faf7f2 100%);">
+      <div class="container">
+        <div class="text-center mb-4">
+          <div class="badge badge-primary mb-2">Simple & Efficient</div>
+          <h2>How BookNest Works</h2>
+          <p style="max-width: 500px; margin: 0 auto;">Three simple steps to save on your college semester book expenses</p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mt-4">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h4 class="mb-2">1. Browse & Discover</h4>
+            <p style="font-size: 0.9rem;">Search for required course textbooks, syllabus reference titles, or competitive exam materials by subject or semester.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h4 class="mb-2">2. Choose Buy or Rent</h4>
+            <p style="font-size: 0.9rem;">Decide whether you want to own the book permanently or rent it for 30–45 days at minimal cost.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h4 class="mb-2">3. Pickup & Read</h4>
+            <p style="font-size: 0.9rem;">Confirm your order with convenient campus library pickup. When done renting, easily return with a single click.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="color: #ffffff;">
+            <img src="assets/images/logo.svg" alt="BookNest Logo" />
+            <span>BookNest</span>
+          </a>
+          <p>BookNest is a dedicated student marketplace and rental hub built for academic excellence and sustainable reuse.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Marketplace</h4>
+          <ul class="footer-links">
+            <li><a href="browse-books.html">Browse All Books</a></li>
+            <li><a href="categories.html">Subject Categories</a></li>
+            <li><a href="sell-book.html">Sell Textbooks</a></li>
+            <li><a href="browse-books.html?rent=true">Rent Books</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Student Account</h4>
+          <ul class="footer-links">
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="orders.html">Order History</a></li>
+            <li><a href="rentals.html">Active Rentals</a></li>
+            <li><a href="my-listings.html">My Listings</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Administration</h4>
+          <ul class="footer-links">
+            <li><a href="admin/index.html">Admin Dashboard</a></li>
+            <li><a href="admin/books.html">Manage Inventory</a></li>
+            <li><a href="admin/orders.html">Orders Management</a></li>
+            <li><a href="admin/reports.html">Analytics & Reports</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 BookNest • Student Book Marketplace & Rental Platform. All rights reserved.</div>
+        <div class="d-flex gap-3">
+          <span>College Mini Project</span>
+          <span>•</span>
+          <span>Verified Platform</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config/firebase-config.js"></script>
+  <script src="js/services/seed-service.js"></script>
+  <script src="js/config/data-store.js"></script>
+  <script src="js/auth/auth.js"></script>
+  <script src="js/services/cart-service.js"></script>
+  <script src="js/utils/ui.js"></script>
+  <script src="js/utils/router.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // 1. Load Popular Categories
+      const categories = await BookNestDataStore.getCategories();
+      const categoriesGrid = document.getElementById('home-categories-grid');
+      if (categoriesGrid) {
+        categoriesGrid.innerHTML = categories.slice(0, 8).map(cat => `
+          <a href="category.html?id=${cat.id}" class="category-tile">
+            <div class="category-icon-box">
+              ${BookNestUI.getIcon('book', 24)}
+            </div>
+            <div class="category-name">${cat.name}</div>
+            <div class="category-count">${cat.description ? cat.description.substring(0, 30) + '...' : 'Explore titles'}</div>
+          </a>
+        `).join('');
+      }
+
+      // 2. Load Featured Books
+      const books = await BookNestDataStore.getBooks();
+      const featuredGrid = document.getElementById('home-featured-grid');
+      if (featuredGrid) {
+        const featuredBooks = books.filter(b => b.featured).slice(0, 4);
+        featuredGrid.innerHTML = featuredBooks.map(renderHomeBookCard).join('');
+      }
+
+      // 3. Load Books for Rent
+      const rentGrid = document.getElementById('home-rent-grid');
+      if (rentGrid) {
+        const rentBooks = books.filter(b => b.rentEnabled && b.availableStock > 0).slice(0, 4);
+        rentGrid.innerHTML = rentBooks.map(renderHomeBookCard).join('');
+      }
+    });
+
+    function renderHomeBookCard(book) {
+      const img = book.images && book.images[0] ? book.images[0] : BookNestUI.getBookPlaceholderSvg(book.title, book.categoryName);
+      return `
+        <div class="book-card">
+          <div class="book-card-media">
+            <div class="book-card-badges">
+              <span class="badge ${book.availableStock > 0 ? 'badge-success' : 'badge-danger'}">
+                ${book.availableStock > 0 ? `${book.availableStock} in stock` : 'Out of Stock'}
+              </span>
+              ${book.rentEnabled ? '<span class="badge badge-primary">Rent Available</span>' : ''}
+            </div>
+            <img src="${img}" alt="${book.title}" loading="lazy" />
+          </div>
+          <div class="book-card-body">
+            <div class="book-category-tag">${book.categoryName || 'Textbook'}</div>
+            <h4 class="book-title"><a href="book-details.html?id=${book.id}">${book.title}</a></h4>
+            <div class="book-author">${book.author}</div>
+            <div class="book-pricing-row">
+              <div class="book-price">₹${book.price}</div>
+              ${book.rentEnabled && book.rentalPrice ? `<div class="book-rental-price">Rent: ₹${book.rentalPrice}/mo</div>` : ''}
+            </div>
+          </div>
+          <div class="book-card-actions">
+            <a href="book-details.html?id=${book.id}" class="btn btn-outline btn-block btn-sm">View Details</a>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

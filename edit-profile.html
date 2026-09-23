@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profile - BookNest</title>
+  
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo"><img src="assets/images/logo.svg" alt="BookNest Logo" /><span>BookNest</span></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="browse-books.html" class="nav-link">Browse Books</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="sell-book.html" class="nav-link">Sell a Book</a></li>
+          <li><a href="orders.html" class="nav-link">My Orders</a></li>
+          <li><a href="rentals.html" class="nav-link">My Rentals</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="cart.html" class="icon-btn" aria-label="Shopping Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="badge-count cart-count-badge" style="display: none;">0</span>
+        </a>
+        <div id="nav-auth-actions" class="d-flex align-center gap-2"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container-narrow section-py-sm">
+    <div class="d-flex align-center justify-between mb-4 flex-wrap gap-2">
+      <div>
+        <nav class="d-flex align-center gap-2 mb-2" style="font-size: 0.85rem; color: var(--color-text-muted);">
+          <a href="profile.html">Profile</a>
+          <span>/</span>
+          <span style="color: var(--color-text-main); font-weight: 600;">Edit Profile</span>
+        </nav>
+        <h1>Edit Profile</h1>
+      </div>
+      <a href="profile.html" class="btn btn-outline btn-sm">Cancel</a>
+    </div>
+
+    <!-- Edit Profile Card -->
+    <div class="card p-4" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2rem;">
+      <form id="edit-profile-form">
+        
+        <!-- Native Profile Photo Picker Dropzone -->
+        <h3 style="font-size: 1.15rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem;">
+          Profile Avatar
+        </h3>
+
+        <div class="d-flex align-center gap-4 mb-4 flex-wrap">
+          <img id="avatar-preview-img" src="" alt="Avatar Preview" style="width: 100px; height: 100px; border-radius: var(--radius-pill); object-fit: cover; border: 3px solid var(--color-secondary-subtle);" />
+          
+          <div style="flex-grow: 1;">
+            <label class="btn btn-secondary btn-sm" style="cursor: pointer; display: inline-flex;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              Choose Photo from Device
+              <input type="file" id="profile-photo-input" accept="image/jpeg,image/png,image/webp" style="display: none;" />
+            </label>
+            <p class="form-hint mt-1" style="margin-bottom: 0;">JPG, PNG, WEBP allowed (Max 5MB). Photo preview is shown immediately.</p>
+          </div>
+        </div>
+
+        <!-- Personal Details -->
+        <h3 style="font-size: 1.15rem; margin-top: 1.5rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem;">
+          Personal & Academic Information
+        </h3>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="form-group">
+            <label class="form-label">Full Name <span class="required">*</span></label>
+            <input type="text" id="edit-name" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address (Read-only)</label>
+            <input type="email" id="edit-email" class="form-control" disabled />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" id="edit-phone" class="form-control" placeholder="+91 9876543210" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">College / Institute Name</label>
+            <input type="text" id="edit-college" class="form-control" placeholder="e.g. City Engineering College" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="form-group">
+            <label class="form-label">Degree / Course</label>
+            <input type="text" id="edit-course" class="form-control" placeholder="e.g. B.Tech Computer Science" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Academic Year</label>
+            <select id="edit-year" class="form-control">
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              <option value="4th Year">4th Year</option>
+              <option value="Postgraduate">Postgraduate</option>
+              <option value="Faculty">Faculty / Staff</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="d-flex justify-end gap-2 mt-4 pt-3" style="border-top: 1px solid var(--color-border);">
+          <a href="profile.html" class="btn btn-ghost">Cancel</a>
+          <button type="submit" id="btn-save-profile" class="btn btn-primary btn-lg">
+            Save Profile Changes
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border: none; padding: 0;">
+      <div>&copy; 2026 BookNest • Student Book Marketplace & Rental Platform</div>
+      <a href="profile.html" style="color: #a7f3d0;">Return to Profile</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config/firebase-config.js"></script>
+  <script src="js/services/seed-service.js"></script>
+  <script src="js/config/data-store.js"></script>
+  <script src="js/auth/auth.js"></script>
+  <script src="js/services/cart-service.js"></script>
+  <script src="js/services/storage-service.js"></script>
+  <script src="js/utils/ui.js"></script>
+  <script src="js/utils/router.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let selectedPhotoFile = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!BookNestAuth.requireAuth('login.html')) return;
+
+      const user = BookNestAuth.getCurrentUser();
+      document.getElementById('edit-name').value = user.name || '';
+      document.getElementById('edit-email').value = user.email || '';
+      document.getElementById('edit-phone').value = user.phone || '';
+      document.getElementById('edit-college').value = user.college || '';
+      document.getElementById('edit-course').value = user.course || '';
+      if (user.year) document.getElementById('edit-year').value = user.year;
+
+      const previewImg = document.getElementById('avatar-preview-img');
+      previewImg.src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=1b4332&color=fff`;
+
+      // Handle File Selection
+      document.getElementById('profile-photo-input').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          try {
+            BookNestStorage.validateFile(file);
+            selectedPhotoFile = file;
+            previewImg.src = URL.createObjectURL(file);
+          } catch (err) {
+            BookNestUI.showToast(err.message, 'error');
+          }
+        }
+      });
+
+      // Handle Save
+      document.getElementById('edit-profile-form').addEventListener('submit', handleSaveProfile);
+    });
+
+    async function handleSaveProfile(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btn-save-profile');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner" style="width:16px;height:16px;border-width:2px;"></span> Saving...';
+
+      try {
+        let photoURL = null;
+        if (selectedPhotoFile) {
+          photoURL = await BookNestStorage.uploadImage(selectedPhotoFile, 'avatars');
+        }
+
+        const updates = {
+          name: document.getElementById('edit-name').value.trim(),
+          phone: document.getElementById('edit-phone').value.trim(),
+          college: document.getElementById('edit-college').value.trim(),
+          course: document.getElementById('edit-course').value.trim(),
+          year: document.getElementById('edit-year').value
+        };
+
+        if (photoURL) {
+          updates.photoURL = photoURL;
+        }
+
+        await BookNestAuth.updateProfile(updates);
+
+        BookNestUI.showToast('Profile updated successfully!', 'success');
+        setTimeout(() => {
+          window.location.href = 'profile.html';
+        }, 800);
+
+      } catch (err) {
+        BookNestUI.showToast(err.message || 'Failed to update profile.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Save Profile Changes';
+      }
+    }
+  </script>
+</body>
+</html>

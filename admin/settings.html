@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Settings - BookNest</title>
+  
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+  <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg" />
+</head>
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="/index.html" class="d-flex align-center gap-2" style="text-decoration: none;">
+          <img src="/assets/images/logo.svg" alt="BookNest Logo" style="height: 34px;" />
+          <div>
+            <div class="brand-title" style="font-size: 1.2rem; font-weight: 800; color: #fff;">BookNest</div>
+            <div style="font-size: 0.7rem; color: #a7f3d0; text-transform: uppercase; font-weight: 600;">Campus Admin</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="admin-nav">
+        <a href="/admin/index.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+        <a href="/admin/books.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          Books Catalog
+        </a>
+        <a href="/admin/add-book.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          Add New Book
+        </a>
+        <a href="/admin/categories.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+          Categories
+        </a>
+        <a href="/admin/orders.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          Orders
+        </a>
+        <a href="/admin/rentals.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Rentals Tracker
+        </a>
+        <a href="/admin/listings.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          User Listings
+        </a>
+        <a href="/admin/users.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Users
+        </a>
+        <a href="/admin/reports.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          Reports & Charts
+        </a>
+        <a href="/admin/settings.html" class="admin-nav-item active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Settings & Seed
+        </a>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <a href="/index.html" class="btn btn-outline btn-block btn-sm" style="color: #a7f3d0; border-color: rgba(255,255,255,0.2);">
+          ← View Public Store
+        </a>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-topbar-left">
+          <button class="admin-sidebar-toggle" id="sidebar-toggle-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <div style="font-weight: 700; font-size: 1.15rem;">Platform Configuration & Setup</div>
+        </div>
+
+        <div class="admin-topbar-right">
+          <div class="d-flex align-center gap-2">
+            <img id="admin-topbar-avatar" src="" alt="Admin" style="width: 34px; height: 34px; border-radius: var(--radius-pill); border: 1px solid var(--color-border);" />
+            <span id="admin-topbar-name" style="font-weight: 600; font-size: 0.9rem;">Administrator</span>
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="BookNestAuth.logout()" title="Sign Out">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="admin-body">
+        <div class="admin-page-header">
+          <div>
+            <h1>Platform Settings & Campus Configuration</h1>
+            <p>Manage campus rental policies, pickup desk location, and initialize or reset sample demo datasets.</p>
+          </div>
+        </div>
+
+        <!-- Campus Store Policies Card -->
+        <div class="admin-card mb-4">
+          <div class="admin-card-header">
+            <div class="admin-card-title">Campus Marketplace & Rental Policies</div>
+            <span class="badge badge-success">Active & Operational</span>
+          </div>
+          <div class="admin-card-body">
+            <form id="campus-settings-form">
+              <div class="grid grid-cols-3 gap-3">
+                <div class="form-group">
+                  <label class="form-label">Default Semester Rental Period</label>
+                  <select id="setting-rental-duration" class="form-control">
+                    <option value="30">30 Days (Short Term)</option>
+                    <option value="60">60 Days (Mid Term)</option>
+                    <option value="90" selected>90 Days (Full Semester)</option>
+                    <option value="120">120 Days (Extended Term)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Late Return Fine Rate (₹ / day)</label>
+                  <input type="number" id="setting-late-fee" class="form-control" value="10" min="0" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Max Active Rentals Per Student</label>
+                  <input type="number" id="setting-max-rentals" class="form-control" value="4" min="1" max="10" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mt-2">
+                <div class="form-group">
+                  <label class="form-label">Campus Pickup & Return Desk</label>
+                  <input type="text" id="setting-pickup-desk" class="form-control" value="Central Campus Library - Ground Floor Circulation Counter" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Platform Support Email</label>
+                  <input type="email" id="setting-support-email" class="form-control" value="support@booknest.edu" />
+                </div>
+              </div>
+
+              <div class="d-flex justify-end pt-3 mt-2" style="border-top: 1px solid var(--color-border);">
+                <button type="submit" class="btn btn-primary">Save Platform Settings</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Sample Data Management Card -->
+        <div class="admin-card mb-4">
+          <div class="admin-card-header">
+            <div class="admin-card-title">Database & Sample Dataset Management</div>
+          </div>
+          <div class="admin-card-body">
+            <div class="d-flex align-center justify-between flex-wrap gap-3">
+              <div>
+                <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Reset All Data to Fresh Campus Seed State</h4>
+                <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0;">
+                  Reloads all 12 realistic academic textbooks (Computer Science, IT, Engineering, Management), categories, test student listings, orders, and rentals.
+                </p>
+              </div>
+              <button class="btn btn-danger" onclick="handleResetSeedData()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                Reset Demo Data
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- System Diagnostics Card -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title">System Health & Live Status</div>
+          </div>
+          <div class="admin-card-body">
+            <div class="grid grid-cols-3 gap-3">
+              <div class="p-3" style="background: var(--color-bg-alt); border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+                <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; font-weight: 700;">Storage Mode</div>
+                <div style="font-weight: 700; color: var(--color-success); font-size: 1rem; margin-top: 0.25rem;">Persistent Data Store</div>
+                <div style="font-size: 0.8rem; color: var(--color-text-muted);">IndexedDB + Local Storage Sync</div>
+              </div>
+
+              <div class="p-3" style="background: var(--color-bg-alt); border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+                <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; font-weight: 700;">Authentication Session</div>
+                <div style="font-weight: 700; color: var(--color-primary); font-size: 1rem; margin-top: 0.25rem;">Role-Based Guard Active</div>
+                <div style="font-size: 0.8rem; color: var(--color-text-muted);">Admin / Student Protected Routes</div>
+              </div>
+
+              <div class="p-3" style="background: var(--color-bg-alt); border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+                <div style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; font-weight: 700;">UI Design System</div>
+                <div style="font-weight: 700; color: var(--color-primary-light); font-size: 1rem; margin-top: 0.25rem;">Clean SVG Vector Engine</div>
+                <div style="font-size: 0.8rem; color: var(--color-text-muted);">Zero Emojis • Strict Academic Standard</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/config/firebase-config.js"></script>
+  <script src="/js/services/seed-service.js"></script>
+  <script src="/js/config/data-store.js"></script>
+  <script src="/js/auth/auth.js"></script>
+  <script src="/js/utils/ui.js"></script>
+  <script src="/js/utils/router.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!BookNestAuth.requireAdmin('/login.html')) return;
+
+      const user = BookNestAuth.getCurrentUser();
+      document.getElementById('admin-topbar-name').textContent = user.name;
+      document.getElementById('admin-topbar-avatar').src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=1b4332&color=fff`;
+
+      document.getElementById('campus-settings-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        BookNestUI.showToast('Campus platform policies saved successfully!', 'success');
+      });
+
+      const toggle = document.getElementById('sidebar-toggle-btn');
+      const sidebar = document.getElementById('admin-sidebar');
+      if (toggle && sidebar) {
+        toggle.onclick = () => sidebar.classList.toggle('open');
+      }
+    });
+
+    async function handleResetSeedData() {
+      const ok = await BookNestUI.confirm({
+        title: 'Reset Database to Seed State',
+        message: 'This will reset all books, categories, orders, rentals, and listings to the default realistic dataset. Proceed?',
+        confirmText: 'Reset Data',
+        danger: true
+      });
+      if (!ok) return;
+
+      BookNestDataStore.resetToSeedData();
+      BookNestUI.showToast('Data store reset to initial seed state!', 'success');
+      setTimeout(() => {
+        window.location.href = '/admin/index.html';
+      }, 600);
+    }
+  </script>
+</body>
+</html>

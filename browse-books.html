@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse Books - BookNest</title>
+  <meta name="description" content="Discover, search, and filter academic textbooks for sale or rent." />
+  
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.svg" alt="BookNest Logo" />
+        <span>BookNest</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="browse-books.html" class="nav-link active">Browse Books</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="sell-book.html" class="nav-link">Sell a Book</a></li>
+          <li><a href="orders.html" class="nav-link">My Orders</a></li>
+          <li><a href="rentals.html" class="nav-link">My Rentals</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="icon-btn" aria-label="Shopping Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="badge-count cart-count-badge" style="display: none;">0</span>
+        </a>
+        <div id="nav-auth-actions" class="d-flex align-center gap-2"></div>
+        <button class="mobile-nav-toggle" aria-label="Open menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-nav-drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="brand-logo"><img src="assets/images/logo.svg" alt="BookNest Logo" /><span>BookNest</span></a>
+      <button class="modal-close-btn drawer-close-btn" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html" class="drawer-link">Home</a></li>
+      <li><a href="browse-books.html" class="drawer-link active">Browse Books</a></li>
+      <li><a href="categories.html" class="drawer-link">Categories</a></li>
+      <li><a href="sell-book.html" class="drawer-link">Sell a Book</a></li>
+      <li><a href="orders.html" class="drawer-link">My Orders</a></li>
+      <li><a href="rentals.html" class="drawer-link">My Rentals</a></li>
+    </ul>
+    <div id="drawer-auth-actions" class="mt-4 pt-3" style="border-top: 1px solid var(--color-border);"></div>
+  </aside>
+
+  <!-- Page Content -->
+  <main class="container">
+    <div class="browse-layout">
+      
+      <!-- Filters Sidebar -->
+      <aside class="filter-sidebar">
+        <div class="filter-header">
+          <h3 style="font-size: 1.1rem;">Filters</h3>
+          <button class="btn btn-ghost btn-sm" id="btn-reset-filters" style="padding: 0.2rem 0.5rem; font-size: 0.8rem;">Reset All</button>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-section">
+          <div class="filter-title">Category</div>
+          <div class="filter-options" id="category-filter-list">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Semester Filter -->
+        <div class="filter-section">
+          <div class="filter-title">Semester</div>
+          <select id="semester-filter" class="form-control" style="font-size: 0.875rem;">
+            <option value="">All Semesters</option>
+            <option value="Semester 1">Semester 1</option>
+            <option value="Semester 2">Semester 2</option>
+            <option value="Semester 3">Semester 3</option>
+            <option value="Semester 4">Semester 4</option>
+            <option value="Semester 5">Semester 5</option>
+            <option value="Semester 6">Semester 6</option>
+            <option value="Semester 7">Semester 7</option>
+            <option value="Semester 8">Semester 8</option>
+          </select>
+        </div>
+
+        <!-- Availability Filter -->
+        <div class="filter-section">
+          <div class="filter-title">Availability</div>
+          <div class="filter-options">
+            <label class="checkbox-label">
+              <input type="checkbox" id="filter-rent-only" />
+              <span>Available for Rent</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="filter-in-stock" />
+              <span>In Stock Only</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Condition Filter -->
+        <div class="filter-section">
+          <div class="filter-title">Book Condition</div>
+          <div class="filter-options">
+            <label class="checkbox-label"><input type="radio" name="condition" value="" checked /> <span>All Conditions</span></label>
+            <label class="checkbox-label"><input type="radio" name="condition" value="New" /> <span>New</span></label>
+            <label class="checkbox-label"><input type="radio" name="condition" value="Like New" /> <span>Like New</span></label>
+            <label class="checkbox-label"><input type="radio" name="condition" value="Good" /> <span>Good</span></label>
+            <label class="checkbox-label"><input type="radio" name="condition" value="Fair" /> <span>Fair</span></label>
+          </div>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-section">
+          <div class="filter-title">Max Purchase Price (₹)</div>
+          <div class="d-flex align-center justify-between mb-1" style="font-size: 0.85rem; font-weight: 600;">
+            <span>₹0</span>
+            <span id="price-range-val">₹1,500</span>
+          </div>
+          <input type="range" id="price-range-slider" min="100" max="2000" step="50" value="2000" style="width: 100%; accent-color: var(--color-primary);" />
+        </div>
+      </aside>
+
+      <!-- Main Results Column -->
+      <section>
+        <!-- Toolbar -->
+        <div class="browse-toolbar">
+          <div class="input-with-icon" style="flex-grow: 1; max-width: 400px;">
+            <span class="input-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </span>
+            <input type="text" id="browse-search-input" class="form-control" placeholder="Search title, author, subject or ISBN..." />
+          </div>
+
+          <div class="d-flex align-center gap-2">
+            <label for="browse-sort" style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted);">Sort By:</label>
+            <select id="browse-sort" class="form-control" style="width: auto; padding: 0.5rem 0.85rem; font-size: 0.875rem;">
+              <option value="newest">Newest Listed</option>
+              <option value="popular">Popular & In Demand</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Books Grid -->
+        <div id="books-results-container" class="grid grid-cols-3 gap-3">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Pagination / Info -->
+        <div id="browse-pagination" class="d-flex align-center justify-between mt-4 pt-3" style="border-top: 1px solid var(--color-border);">
+          <span id="results-count-text" style="font-size: 0.9rem; color: var(--color-text-muted);">Showing books...</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <div>&copy; 2026 BookNest • Student Book Marketplace & Rental Platform</div>
+        <a href="index.html" style="color: #a7f3d0;">Back to Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config/firebase-config.js"></script>
+  <script src="js/services/seed-service.js"></script>
+  <script src="js/config/data-store.js"></script>
+  <script src="js/auth/auth.js"></script>
+  <script src="js/services/cart-service.js"></script>
+  <script src="js/utils/ui.js"></script>
+  <script src="js/utils/router.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let allCategories = [];
+    let currentFilters = {
+      query: BookNestRouter.getParam('q') || '',
+      categoryId: BookNestRouter.getParam('cat') || '',
+      semester: '',
+      condition: '',
+      rentOnly: BookNestRouter.getParam('rent') === 'true',
+      inStockOnly: false,
+      maxPrice: 2000,
+      sortBy: 'newest'
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      // 1. Load Categories for Filter
+      allCategories = await BookNestDataStore.getCategories();
+      renderCategoryFilterList();
+
+      // 2. Set search input from URL
+      if (currentFilters.query) {
+        document.getElementById('browse-search-input').value = currentFilters.query;
+      }
+      if (currentFilters.rentOnly) {
+        document.getElementById('filter-rent-only').checked = true;
+      }
+
+      // 3. Attach filter event listeners
+      attachFilterEvents();
+
+      // 4. Initial Fetch & Render
+      await applyFiltersAndRender();
+    });
+
+    function renderCategoryFilterList() {
+      const container = document.getElementById('category-filter-list');
+      if (!container) return;
+
+      let html = `
+        <label class="checkbox-label">
+          <input type="radio" name="category" value="" ${!currentFilters.categoryId ? 'checked' : ''} />
+          <span>All Categories</span>
+        </label>
+      `;
+
+      allCategories.forEach(cat => {
+        html += `
+          <label class="checkbox-label">
+            <input type="radio" name="category" value="${cat.id}" ${currentFilters.categoryId === cat.id ? 'checked' : ''} />
+            <span>${cat.name}</span>
+          </label>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function attachFilterEvents() {
+      // Category Radio
+      document.getElementById('category-filter-list').addEventListener('change', (e) => {
+        if (e.target.name === 'category') {
+          currentFilters.categoryId = e.target.value;
+          applyFiltersAndRender();
+        }
+      });
+
+      // Semester
+      document.getElementById('semester-filter').addEventListener('change', (e) => {
+        currentFilters.semester = e.target.value;
+        applyFiltersAndRender();
+      });
+
+      // Condition
+      document.querySelectorAll('input[name="condition"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          currentFilters.condition = e.target.value;
+          applyFiltersAndRender();
+        });
+      });
+
+      // Rent only & In stock
+      document.getElementById('filter-rent-only').addEventListener('change', (e) => {
+        currentFilters.rentOnly = e.target.checked;
+        applyFiltersAndRender();
+      });
+
+      document.getElementById('filter-in-stock').addEventListener('change', (e) => {
+        currentFilters.inStockOnly = e.target.checked;
+        applyFiltersAndRender();
+      });
+
+      // Price slider
+      const slider = document.getElementById('price-range-slider');
+      const sliderVal = document.getElementById('price-range-val');
+      slider.addEventListener('input', (e) => {
+        sliderVal.textContent = `₹${Number(e.target.value).toLocaleString()}`;
+        currentFilters.maxPrice = Number(e.target.value);
+        applyFiltersAndRender();
+      });
+
+      // Search input with debounce
+      let searchTimeout;
+      document.getElementById('browse-search-input').addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          currentFilters.query = e.target.value;
+          applyFiltersAndRender();
+        }, 300);
+      });
+
+      // Sort
+      document.getElementById('browse-sort').addEventListener('change', (e) => {
+        currentFilters.sortBy = e.target.value;
+        applyFiltersAndRender();
+      });
+
+      // Reset Button
+      document.getElementById('btn-reset-filters').addEventListener('click', () => {
+        currentFilters = {
+          query: '',
+          categoryId: '',
+          semester: '',
+          condition: '',
+          rentOnly: false,
+          inStockOnly: false,
+          maxPrice: 2000,
+          sortBy: 'newest'
+        };
+        document.getElementById('browse-search-input').value = '';
+        document.getElementById('semester-filter').value = '';
+        document.getElementById('filter-rent-only').checked = false;
+        document.getElementById('filter-in-stock').checked = false;
+        slider.value = 2000;
+        sliderVal.textContent = '₹2,000';
+        document.getElementById('browse-sort').value = 'newest';
+        renderCategoryFilterList();
+        document.querySelector('input[name="condition"][value=""]').checked = true;
+        applyFiltersAndRender();
+      });
+    }
+
+    async function applyFiltersAndRender() {
+      const container = document.getElementById('books-results-container');
+      const countLabel = document.getElementById('results-count-text');
+
+      container.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 0;">
+          <div class="spinner"></div>
+          <p class="mt-2" style="color: var(--color-text-muted);">Finding matching textbooks...</p>
+        </div>
+      `;
+
+      const books = await BookNestDataStore.getBooks(currentFilters);
+
+      if (books.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1;">
+            <div class="empty-state-icon">${BookNestUI.getIcon('book', 32)}</div>
+            <h3 class="empty-state-title">No matching books found</h3>
+            <p class="empty-state-desc">Try adjusting your filters, searching for a different subject or reset your search criteria.</p>
+            <button class="btn btn-primary btn-sm" onclick="document.getElementById('btn-reset-filters').click();">Reset Filters</button>
+          </div>
+        `;
+        countLabel.textContent = '0 books found';
+        return;
+      }
+
+      countLabel.textContent = `Showing ${books.length} book${books.length > 1 ? 's' : ''}`;
+
+      container.innerHTML = books.map(book => {
+        const img = book.images && book.images[0] ? book.images[0] : BookNestUI.getBookPlaceholderSvg(book.title, book.categoryName);
+        return `
+          <div class="book-card">
+            <div class="book-card-media">
+              <div class="book-card-badges">
+                <span class="badge ${book.availableStock > 0 ? 'badge-success' : 'badge-danger'}">
+                  ${book.availableStock > 0 ? `${book.availableStock} in stock` : 'Out of Stock'}
+                </span>
+                <span class="badge badge-secondary">${book.condition || 'Good'}</span>
+              </div>
+              <img src="${img}" alt="${book.title}" loading="lazy" />
+            </div>
+            <div class="book-card-body">
+              <div class="book-category-tag">${book.categoryName || 'General'}</div>
+              <h4 class="book-title"><a href="book-details.html?id=${book.id}">${book.title}</a></h4>
+              <div class="book-author">${book.author}</div>
+              <div class="book-pricing-row">
+                <div>
+                  <div class="book-price">₹${book.price}</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">Buy to own</div>
+                </div>
+                ${book.rentEnabled && book.rentalPrice ? `
+                  <div class="text-right">
+                    <div class="book-rental-price">₹${book.rentalPrice}/mo</div>
+                    <div style="font-size: 0.75rem; color: var(--color-text-muted);">${book.returnDurationDays || 30} Days Rent</div>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+            <div class="book-card-actions">
+              <a href="book-details.html?id=${book.id}" class="btn btn-outline btn-block btn-sm">Details</a>
+              ${book.availableStock > 0 ? `
+                <button class="btn btn-primary btn-sm" onclick="handleQuickBuy('${book.id}')" title="Add to Cart">
+                  ${BookNestUI.getIcon('cart', 16)}
+                </button>
+              ` : `
+                <button class="btn btn-secondary btn-sm" disabled>Out of Stock</button>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function handleQuickBuy(bookId) {
+      const book = await BookNestDataStore.getBookById(bookId);
+      if (book) {
+        BookNestCart.addItem(book, 'buy', 1);
+      }
+    }
+  </script>
+</body>
+</html>

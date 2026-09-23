@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Profile - BookNest</title>
+  
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo"><img src="assets/images/logo.svg" alt="BookNest Logo" /><span>BookNest</span></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="browse-books.html" class="nav-link">Browse Books</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="sell-book.html" class="nav-link">Sell a Book</a></li>
+          <li><a href="orders.html" class="nav-link">My Orders</a></li>
+          <li><a href="rentals.html" class="nav-link">My Rentals</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="cart.html" class="icon-btn" aria-label="Shopping Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="badge-count cart-count-badge" style="display: none;">0</span>
+        </a>
+        <div id="nav-auth-actions" class="d-flex align-center gap-2"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container-narrow section-py-sm">
+    <!-- Profile Header Card -->
+    <div class="profile-header-card">
+      <img id="prof-photo" src="" alt="Profile Photo" class="profile-avatar-large" />
+      <div style="flex-grow: 1;">
+        <div class="d-flex align-center gap-2 mb-1">
+          <h1 id="prof-name" style="font-size: 1.75rem;">Student Name</h1>
+          <span id="prof-role-badge" class="badge badge-primary">STUDENT</span>
+        </div>
+        <div id="prof-email" style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0.5rem;">student@college.edu</div>
+        <div id="prof-meta" style="font-size: 0.85rem; color: var(--color-text-light);">Member since Jan 2026</div>
+      </div>
+      <div>
+        <a href="edit-profile.html" class="btn btn-primary btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          Edit Profile
+        </a>
+      </div>
+    </div>
+
+    <!-- Student Stats -->
+    <div class="profile-stats-grid">
+      <div class="profile-stat-box">
+        <div id="stat-orders" style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; color: var(--color-primary);">0</div>
+        <div style="font-size: 0.8rem; color: var(--color-text-muted);">Orders Placed</div>
+      </div>
+      <div class="profile-stat-box">
+        <div id="stat-rentals" style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; color: var(--color-accent);">0</div>
+        <div style="font-size: 0.8rem; color: var(--color-text-muted);">Textbooks Rented</div>
+      </div>
+      <div class="profile-stat-box">
+        <div id="stat-listings" style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; color: var(--color-primary-light);">0</div>
+        <div style="font-size: 0.8rem; color: var(--color-text-muted);">My Book Listings</div>
+      </div>
+      <div class="profile-stat-box">
+        <div id="stat-savings" style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; color: var(--color-success);">₹1,200</div>
+        <div style="font-size: 0.8rem; color: var(--color-text-muted);">Estimated Savings</div>
+      </div>
+    </div>
+
+    <!-- Academic & Personal Details Card -->
+    <div class="card p-4" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2rem;">
+      <h3 style="font-size: 1.15rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem;">Academic Details</h3>
+      
+      <table class="book-specs-table">
+        <tbody>
+          <tr><th>College / Institute</th><td id="prof-college">-</td></tr>
+          <tr><th>Degree / Course</th><td id="prof-course">-</td></tr>
+          <tr><th>Academic Year</th><td id="prof-year">-</td></tr>
+          <tr><th>Phone Number</th><td id="prof-phone">-</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Quick Actions & Security -->
+    <div class="card p-4" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.75rem;">
+      <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Account Management</h3>
+      <div class="d-flex gap-2 flex-wrap">
+        <a href="forgot-password.html" class="btn btn-outline btn-sm">Change / Reset Password</a>
+        <button class="btn btn-ghost btn-sm" onclick="BookNestAuth.logout()" style="color: var(--color-danger); margin-left: auto;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border: none; padding: 0;">
+      <div>&copy; 2026 BookNest • Student Book Marketplace & Rental Platform</div>
+      <a href="browse-books.html" style="color: #a7f3d0;">Browse Catalog</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config/firebase-config.js"></script>
+  <script src="js/services/seed-service.js"></script>
+  <script src="js/config/data-store.js"></script>
+  <script src="js/auth/auth.js"></script>
+  <script src="js/services/cart-service.js"></script>
+  <script src="js/utils/ui.js"></script>
+  <script src="js/utils/router.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (!BookNestAuth.requireAuth('login.html')) return;
+
+      const user = BookNestAuth.getCurrentUser();
+      document.getElementById('prof-name').textContent = user.name;
+      document.getElementById('prof-email').textContent = user.email;
+      document.getElementById('prof-photo').src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=1b4332&color=fff`;
+      document.getElementById('prof-role-badge').textContent = user.role.toUpperCase();
+      document.getElementById('prof-meta').textContent = `Member since ${BookNestUI.formatDate(user.createdAt)}`;
+      document.getElementById('prof-college').textContent = user.college || 'Not specified';
+      document.getElementById('prof-course').textContent = user.course || 'Not specified';
+      document.getElementById('prof-year').textContent = user.year || 'Not specified';
+      document.getElementById('prof-phone').textContent = user.phone || 'Not specified';
+
+      // Load Stats
+      const orders = await BookNestDataStore.getOrders(user.uid);
+      const rentals = await BookNestDataStore.getRentals(user.uid);
+      const listings = await BookNestDataStore.getListings({ sellerId: user.uid });
+
+      document.getElementById('stat-orders').textContent = orders.length;
+      document.getElementById('stat-rentals').textContent = rentals.length;
+      document.getElementById('stat-listings').textContent = listings.length;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sell Your Book - BookNest</title>
+  <meta name="description" content="List your used textbooks for sale or rent to other college students on BookNest." />
+  
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo"><img src="assets/images/logo.svg" alt="BookNest Logo" /><span>BookNest</span></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="browse-books.html" class="nav-link">Browse Books</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="sell-book.html" class="nav-link active">Sell a Book</a></li>
+          <li><a href="orders.html" class="nav-link">My Orders</a></li>
+          <li><a href="rentals.html" class="nav-link">My Rentals</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="cart.html" class="icon-btn" aria-label="Shopping Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="badge-count cart-count-badge" style="display: none;">0</span>
+        </a>
+        <div id="nav-auth-actions" class="d-flex align-center gap-2"></div>
+        <button class="mobile-nav-toggle" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-nav-drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="brand-logo"><img src="assets/images/logo.svg" alt="BookNest Logo" /><span>BookNest</span></a>
+      <button class="modal-close-btn drawer-close-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html" class="drawer-link">Home</a></li>
+      <li><a href="browse-books.html" class="drawer-link">Browse Books</a></li>
+      <li><a href="categories.html" class="drawer-link">Categories</a></li>
+      <li><a href="sell-book.html" class="drawer-link active">Sell a Book</a></li>
+      <li><a href="orders.html" class="drawer-link">My Orders</a></li>
+      <li><a href="rentals.html" class="drawer-link">My Rentals</a></li>
+    </ul>
+    <div id="drawer-auth-actions" class="mt-4 pt-3" style="border-top: 1px solid var(--color-border);"></div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="container-narrow section-py">
+    <div class="text-center mb-4">
+      <div class="badge badge-primary mb-2">Student Marketplace</div>
+      <h1>List Your Used Textbook</h1>
+      <p>Pass on your completed semester books to junior students and earn back your book expenses.</p>
+    </div>
+
+    <!-- Seller Listing Form -->
+    <div class="card p-4" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2.25rem;">
+      <form id="sell-book-form">
+        
+        <!-- Book Details Section -->
+        <h3 style="font-size: 1.15rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem;">1. Book Information</h3>
+        
+        <div class="form-group">
+          <label class="form-label">Book Title <span class="required">*</span></label>
+          <input type="text" id="sell-title" class="form-control" placeholder="e.g. Data Structures & Algorithms in Java" required />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="form-group">
+            <label class="form-label">Author(s) <span class="required">*</span></label>
+            <input type="text" id="sell-author" class="form-control" placeholder="e.g. Robert Lafore" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">ISBN (Optional)</label>
+            <input type="text" id="sell-isbn" class="form-control" placeholder="e.g. 978-0672324536" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div class="form-group">
+            <label class="form-label">Academic Category <span class="required">*</span></label>
+            <select id="sell-category" class="form-control" required>
+              <option value="">Select Category...</option>
+              <!-- Populated by JS -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Course / Subject <span class="required">*</span></label>
+            <input type="text" id="sell-subject" class="form-control" placeholder="e.g. Data Structures" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Target Semester</label>
+            <select id="sell-semester" class="form-control">
+              <option value="Semester 1">Semester 1</option>
+              <option value="Semester 2">Semester 2</option>
+              <option value="Semester 3" selected>Semester 3</option>
+              <option value="Semester 4">Semester 4</option>
+              <option value="Semester 5">Semester 5</option>
+              <option value="Semester 6">Semester 6</option>
+              <option value="Semester 7">Semester 7</option>
+              <option value="Semester 8">Semester 8</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Physical Condition <span class="required">*</span></label>
+          <select id="sell-condition" class="form-control" required>
+            <option value="Like New">Like New (No marks, crisp pages)</option>
+            <option value="Good" selected>Good (Minor pencil notes or highlights)</option>
+            <option value="Fair">Fair (Readable, cover wear)</option>
+            <option value="New">New / Unused</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Description & Notes</label>
+          <textarea id="sell-description" class="form-control" rows="3" placeholder="Describe the edition, highlights, included CD/supplemental codes, and why this textbook was helpful..."></textarea>
+        </div>
+
+        <!-- Pricing & Stock Section -->
+        <h3 style="font-size: 1.15rem; margin-top: 2rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem;">2. Pricing & Rental Settings</h3>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div class="form-group">
+            <label class="form-label">Selling Price (₹) <span class="required">*</span></label>
+            <input type="number" id="sell-price" class="form-control" min="50" max="10000" placeholder="e.g. 450" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Available Copies</label>
+            <input type="number" id="sell-quantity" class="form-control" min="1" max="50" value="1" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Rental Monthly Price (₹)</label>
+            <input type="number" id="sell-rental-price" class="form-control" min="0" max="1000" placeholder="e.g. 80 (0 to disable)" />
+          </div>
+        </div>
+
+        <div class="form-group mb-4">
+          <label class="checkbox-label">
+            <input type="checkbox" id="sell-rent-enabled" checked />
+            <span style="font-weight: 600;">Allow other students to rent this book for 30-day periods</span>
+          </label>
+        </div>
+
+        <!-- Native Image Upload Dropzone Section -->
+        <h3 style="font-size: 1.15rem; margin-top: 2rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem;">3. Book Photos (Native Device Upload)</h3>
+        
+        <div class="file-dropzone" id="book-dropzone">
+          <input type="file" id="book-file-input" multiple accept="image/jpeg,image/png,image/webp" />
+          <div style="margin: 0 auto; width: 48px; height: 48px; border-radius: var(--radius-pill); background: var(--color-secondary-subtle); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          </div>
+          <div style="font-weight: 700; color: var(--color-text-main); margin-bottom: 0.25rem;">Click or Tap to Select Book Photos</div>
+          <p class="form-hint" style="margin-bottom: 0;">Supports JPG, PNG, WEBP from your phone camera or desktop files (Max 5MB each)</p>
+        </div>
+
+        <!-- Image Previews -->
+        <div id="image-previews-grid" class="file-preview-grid">
+          <!-- Previews inserted here -->
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-flex align-center justify-between mt-4 pt-3" style="border-top: 1px solid var(--color-border);">
+          <span style="font-size: 0.85rem; color: var(--color-text-muted);">
+            Listing will be submitted for campus moderation review.
+          </span>
+          <button type="submit" id="btn-submit-listing" class="btn btn-primary btn-lg">
+            Submit Book for Approval
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border: none; padding: 0;">
+      <div>&copy; 2026 BookNest • Student Book Marketplace & Rental Platform</div>
+      <a href="my-listings.html" style="color: #a7f3d0;">View My Listings</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config/firebase-config.js"></script>
+  <script src="js/services/seed-service.js"></script>
+  <script src="js/config/data-store.js"></script>
+  <script src="js/auth/auth.js"></script>
+  <script src="js/services/cart-service.js"></script>
+  <script src="js/services/storage-service.js"></script>
+  <script src="js/utils/ui.js"></script>
+  <script src="js/utils/router.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let selectedFiles = [];
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      // 1. Require Authentication
+      if (!BookNestAuth.requireAuth('login.html')) return;
+
+      // 2. Load Categories
+      const categories = await BookNestDataStore.getCategories();
+      const select = document.getElementById('sell-category');
+      select.innerHTML = '<option value="">Select Category...</option>' + 
+        categories.map(c => `<option value="${c.id}" data-name="${c.name}">${c.name}</option>`).join('');
+
+      // 3. Setup Native File Picker & Previews
+      const fileInput = document.getElementById('book-file-input');
+      fileInput.addEventListener('change', handleFileSelection);
+
+      // 4. Form Submit
+      const form = document.getElementById('sell-book-form');
+      form.addEventListener('submit', handleListingSubmit);
+    });
+
+    function handleFileSelection(e) {
+      const files = Array.from(e.target.files);
+      for (const file of files) {
+        try {
+          BookNestStorage.validateFile(file);
+          selectedFiles.push(file);
+        } catch (err) {
+          BookNestUI.showToast(err.message, 'error');
+        }
+      }
+      renderPreviews();
+    }
+
+    function renderPreviews() {
+      const grid = document.getElementById('image-previews-grid');
+      grid.innerHTML = '';
+      selectedFiles.forEach((file, idx) => {
+        const url = URL.createObjectURL(file);
+        const div = document.createElement('div');
+        div.className = 'preview-thumbnail';
+        div.innerHTML = `
+          <img src="${url}" alt="Preview" />
+          <button type="button" class="remove-btn" onclick="removeSelectedFile(${idx})">✕</button>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    window.removeSelectedFile = function(index) {
+      selectedFiles.splice(index, 1);
+      renderPreviews();
+    };
+
+    async function handleListingSubmit(e) {
+      e.preventDefault();
+      const user = BookNestAuth.getCurrentUser();
+      const btn = document.getElementById('btn-submit-listing');
+
+      try {
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner" style="width:16px;height:16px;border-width:2px;"></span> Uploading & Saving...';
+
+        // 1. Upload Images
+        let imageUrls = [];
+        if (selectedFiles.length > 0) {
+          imageUrls = await BookNestStorage.uploadMultipleImages(selectedFiles, 'listings');
+        } else {
+          imageUrls = ['https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80'];
+        }
+
+        const categorySelect = document.getElementById('sell-category');
+        const selectedOption = categorySelect.options[categorySelect.selectedIndex];
+
+        // 2. Prepare Listing Data
+        const listingData = {
+          sellerId: user.uid,
+          sellerName: user.name,
+          sellerEmail: user.email,
+          title: document.getElementById('sell-title').value.trim(),
+          author: document.getElementById('sell-author').value.trim(),
+          isbn: document.getElementById('sell-isbn').value.trim(),
+          categoryId: categorySelect.value,
+          categoryName: selectedOption ? selectedOption.getAttribute('data-name') : 'General',
+          subject: document.getElementById('sell-subject').value.trim(),
+          semester: document.getElementById('sell-semester').value,
+          condition: document.getElementById('sell-condition').value,
+          description: document.getElementById('sell-description').value.trim(),
+          price: Number(document.getElementById('sell-price').value),
+          quantity: Number(document.getElementById('sell-quantity').value) || 1,
+          rentalPrice: Number(document.getElementById('sell-rental-price').value) || 0,
+          rentEnabled: document.getElementById('sell-rent-enabled').checked,
+          images: imageUrls,
+          status: 'pending' // Admin approval required
+        };
+
+        await BookNestDataStore.submitListing(listingData);
+
+        BookNestUI.showToast('Listing submitted! It will be reviewed by campus admin shortly.', 'success');
+        setTimeout(() => {
+          window.location.href = 'my-listings.html';
+        }, 1200);
+
+      } catch (err) {
+        BookNestUI.showToast(err.message || 'Failed to submit listing', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Submit Book for Approval';
+      }
+    }
+  </script>
+</body>
+</html>

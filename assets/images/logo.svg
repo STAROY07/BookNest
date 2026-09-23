@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bookLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b4332"/>
+      <stop offset="100%" stop-color="#102a1e"/>
+    </linearGradient>
+    <linearGradient id="bookRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d6a4f"/>
+      <stop offset="100%" stop-color="#1b4332"/>
+    </linearGradient>
+    <linearGradient id="pageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f4ebd9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Graphic: Open Book in Nest with Leaves -->
+  <g transform="translate(100, 10)">
+    <!-- Leaves Left -->
+    <path d="M-15 50 C-40 30 -50 65 -25 80 C-10 70 -5 55 -15 50 Z" fill="#2d6a4f"/>
+    <path d="M-30 85 C-55 85 -60 115 -35 125 C-20 115 -18 95 -30 85 Z" fill="#40916c"/>
+
+    <!-- Leaves Right -->
+    <path d="M215 50 C240 30 250 65 225 80 C210 70 205 55 215 50 Z" fill="#2d6a4f"/>
+    <path d="M230 85 C255 85 260 115 235 125 C220 115 218 95 230 85 Z" fill="#40916c"/>
+
+    <!-- Open Book Pages (Fanned Top) -->
+    <path d="M100 70 C70 40 40 35 25 45 C45 65 75 75 100 80 Z" fill="url(#pageGrad)"/>
+    <path d="M100 70 C130 40 160 35 175 45 C155 65 125 75 100 80 Z" fill="url(#pageGrad)"/>
+
+    <path d="M100 75 C75 50 45 48 30 58 C52 75 80 82 100 86 Z" fill="#faf7f2"/>
+    <path d="M100 75 C125 50 155 48 170 58 C148 75 120 82 100 86 Z" fill="#faf7f2"/>
+
+    <!-- Book Covers -->
+    <!-- Left Cover -->
+    <path d="M100 90 L20 60 L24 135 L100 160 Z" fill="url(#bookLeft)"/>
+    <!-- Right Cover -->
+    <path d="M100 90 L180 60 L176 135 L100 160 Z" fill="url(#bookRight)"/>
+
+    <!-- Book Spine / Center Divider -->
+    <path d="M98 90 L102 90 L102 160 L98 160 Z" fill="#0d2117"/>
+
+    <!-- Bookmark tag on right cover -->
+    <rect x="125" y="80" width="30" height="14" rx="2" fill="#f4ebd9" opacity="0.8"/>
+
+    <!-- Nest Twigs (Intertwined below book) -->
+    <path d="M-10 105 C20 160 180 160 210 105 C180 150 20 150 -10 105 Z" fill="#8c6239"/>
+    <path d="M5 118 C35 175 165 175 195 118 C160 165 40 165 5 118 Z" fill="#6f4e28"/>
+    <path d="M-20 88 C30 185 170 185 220 88 C170 170 30 170 -20 88 Z" fill="#543b1f"/>
+    <path d="M25 135 C55 185 145 185 175 135 C145 175 55 175 25 135 Z" fill="#8c6239"/>
+  </g>
+
+  <!-- Typography: BookNest -->
+  <g transform="translate(200, 235)" text-anchor="middle">
+    <text font-family="'Outfit', 'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="52" letter-spacing="-1">
+      <tspan fill="#102a1e">Book</tspan><tspan fill="#40916c">Nest</tspan>
+    </text>
+  </g>
+
+  <!-- Tagline -->
+  <g transform="translate(200, 265)" text-anchor="middle">
+    <text font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#1b4332" letter-spacing="4">
+      BUY • SELL • REUSE • LEARN
+    </text>
+  </g>
+
+  <!-- Sub-tagline with line accents -->
+  <g transform="translate(200, 290)">
+    <line x1="-140" y1="0" x2="-80" y2="0" stroke="#cbd5ce" stroke-width="1.5"/>
+    <text font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="10.5" fill="#526058" text-anchor="middle" y="3.5">
+      Books for a brighter tomorrow
+    </text>
+    <line x1="80" y1="0" x2="140" y2="0" stroke="#cbd5ce" stroke-width="1.5"/>
+  </g>
+</svg>

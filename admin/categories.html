@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Categories - Admin - BookNest</title>
+  
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+  <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg" />
+</head>
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="/index.html" class="d-flex align-center gap-2" style="text-decoration: none;">
+          <img src="/assets/images/logo.svg" alt="BookNest Logo" style="height: 34px;" />
+          <div>
+            <div class="brand-title" style="font-size: 1.2rem; font-weight: 800; color: #fff;">BookNest</div>
+            <div style="font-size: 0.7rem; color: #a7f3d0; text-transform: uppercase; font-weight: 600;">Campus Admin</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="admin-nav">
+        <a href="/admin/index.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+        <a href="/admin/books.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          Books Catalog
+        </a>
+        <a href="/admin/add-book.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          Add New Book
+        </a>
+        <a href="/admin/categories.html" class="admin-nav-item active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+          Categories
+        </a>
+        <a href="/admin/orders.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          Orders
+        </a>
+        <a href="/admin/rentals.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Rentals Tracker
+        </a>
+        <a href="/admin/listings.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          User Listings
+        </a>
+        <a href="/admin/users.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Users
+        </a>
+        <a href="/admin/reports.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          Reports & Charts
+        </a>
+        <a href="/admin/settings.html" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Settings & Seed
+        </a>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <a href="/index.html" class="btn btn-outline btn-block btn-sm" style="color: #a7f3d0; border-color: rgba(255,255,255,0.2);">
+          ← View Public Store
+        </a>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-topbar-left">
+          <button class="admin-sidebar-toggle" id="sidebar-toggle-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <div style="font-weight: 700; font-size: 1.15rem;">Subject Categories Management</div>
+        </div>
+
+        <div class="admin-topbar-right">
+          <div class="d-flex align-center gap-2">
+            <img id="admin-topbar-avatar" src="" alt="Admin" style="width: 34px; height: 34px; border-radius: var(--radius-pill); border: 1px solid var(--color-border);" />
+            <span id="admin-topbar-name" style="font-weight: 600; font-size: 0.9rem;">Administrator</span>
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="BookNestAuth.logout()" title="Sign Out">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="admin-body">
+        <div class="admin-page-header">
+          <div>
+            <h1>Academic Categories</h1>
+            <p>Create, update, and organize textbook subject categories across academic departments.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openAddCategoryModal()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Add Category
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Category Name</th>
+                  <th>Slug</th>
+                  <th>Description</th>
+                  <th>Available Books</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-categories-tbody">
+                <!-- Injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Category Modal -->
+  <div class="modal-backdrop" id="category-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="cat-modal-title">Add Category</h3>
+        <button class="modal-close-btn" onclick="closeCategoryModal()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+      <form id="category-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Category Name <span class="required">*</span></label>
+            <input type="text" id="cat-name-input" class="form-control" placeholder="e.g. Artificial Intelligence & Data Science" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="cat-desc-input" class="form-control" rows="3" placeholder="Syllabus focus and subject notes..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeCategoryModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/config/firebase-config.js"></script>
+  <script src="/js/services/seed-service.js"></script>
+  <script src="/js/config/data-store.js"></script>
+  <script src="/js/auth/auth.js"></script>
+  <script src="/js/utils/ui.js"></script>
+  <script src="/js/utils/router.js"></script>
+
+  <script>
+    let editCatId = null;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (!BookNestAuth.requireAdmin('/login.html')) return;
+
+      const user = BookNestAuth.getCurrentUser();
+      document.getElementById('admin-topbar-name').textContent = user.name;
+      document.getElementById('admin-topbar-avatar').src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=1b4332&color=fff`;
+
+      await loadCategories();
+
+      document.getElementById('category-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('cat-name-input').value.trim();
+        const desc = document.getElementById('cat-desc-input').value.trim();
+
+        if (editCatId) {
+          await BookNestDataStore.updateCategory(editCatId, { name, description: desc });
+          BookNestUI.showToast('Category updated.', 'success');
+        } else {
+          await BookNestDataStore.addCategory({ name, description: desc });
+          BookNestUI.showToast('Category created.', 'success');
+        }
+
+        closeCategoryModal();
+        await loadCategories();
+      });
+
+      const toggle = document.getElementById('sidebar-toggle-btn');
+      const sidebar = document.getElementById('admin-sidebar');
+      if (toggle && sidebar) {
+        toggle.onclick = () => sidebar.classList.toggle('open');
+      }
+    });
+
+    async function loadCategories() {
+      const categories = await BookNestDataStore.getCategories();
+      const allBooks = await BookNestDataStore.getBooks({ includeAllStatus: true });
+      const tbody = document.getElementById('admin-categories-tbody');
+
+      tbody.innerHTML = categories.map(cat => {
+        const count = allBooks.filter(b => b.categoryId === cat.id).length;
+        return `
+          <tr>
+            <td><strong>${cat.name}</strong></td>
+            <td><code>${cat.slug || cat.id}</code></td>
+            <td style="color: var(--color-text-muted); max-width: 320px;">${cat.description || '-'}</td>
+            <td><span class="badge badge-secondary">${count} Books</span></td>
+            <td>
+              <div class="d-flex align-center gap-2">
+                <button class="btn btn-outline btn-sm" onclick="openEditCategory('${cat.id}', '${cat.name.replace(/'/g, "\\'")}', '${(cat.description || '').replace(/'/g, "\\'")}')" style="display:inline-flex; align-items:center; gap:5px; font-weight:600; padding: 0.35rem 0.65rem;" title="Edit Category">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                  Edit
+                </button>
+                <button class="btn btn-ghost btn-sm" onclick="handleDeleteCategory('${cat.id}')" style="display:inline-flex; align-items:center; gap:5px; color: var(--color-danger); font-weight:600; padding: 0.35rem 0.65rem;" title="Delete Category">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function openAddCategoryModal() {
+      editCatId = null;
+      document.getElementById('cat-modal-title').textContent = 'Add Category';
+      document.getElementById('cat-name-input').value = '';
+      document.getElementById('cat-desc-input').value = '';
+      document.getElementById('category-modal').classList.add('show');
+    }
+
+    function openEditCategory(id, name, desc) {
+      editCatId = id;
+      document.getElementById('cat-modal-title').textContent = 'Edit Category';
+      document.getElementById('cat-name-input').value = name;
+      document.getElementById('cat-desc-input').value = desc;
+      document.getElementById('category-modal').classList.add('show');
+    }
+
+    function closeCategoryModal() {
+      document.getElementById('category-modal').classList.remove('show');
+      editCatId = null;
+    }
+
+    async function handleDeleteCategory(id) {
+      const ok = await BookNestUI.confirm({
+        title: 'Delete Category',
+        message: 'Are you sure you want to delete this category?',
+        confirmText: 'Delete',
+        danger: true
+      });
+      if (!ok) return;
+
+      await BookNestDataStore.deleteCategory(id);
+      BookNestUI.showToast('Category removed.', 'info');
+      await loadCategories();
+    }
+  </script>
+</body>
+</html>
