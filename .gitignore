@@ -5,3 +5,6 @@ Thumbs.db
 .env.local
 .vscode/
 .idea/
+.venv/
+__pycache__/
+*.pyc

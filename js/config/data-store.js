@@ -17,13 +17,70 @@ const BookNestDataStore = {
   },
 
   /**
-   * Initialize Local Data Store with Seed Data if empty
+   * Initialize Local Data Store with Seed Data if empty or update to v2 covers
    */
   init() {
-    const isSeeded = localStorage.getItem(this.storageKeys.seeded);
-    if (!isSeeded && window.BookNestSeedData) {
+    const seedVersion = 'v2_covers';
+    const currentVersion = localStorage.getItem(this.storageKeys.seeded);
+    if (!currentVersion && window.BookNestSeedData) {
       this.resetToSeedData();
+    } else if (currentVersion !== seedVersion && window.BookNestSeedData) {
+      this.syncSeedCovers();
+      localStorage.setItem(this.storageKeys.seeded, seedVersion);
     }
+  },
+
+  /**
+   * Synchronize seed book covers into local storage
+   */
+  syncSeedCovers() {
+    if (!window.BookNestSeedData) return;
+    const existingBooks = this._get(this.storageKeys.books, []);
+    const seedBooksMap = new Map((BookNestSeedData.books || []).map(b => [b.id, b]));
+    
+    let updated = false;
+    const newBooks = existingBooks.map(b => {
+      const seedBook = seedBooksMap.get(b.id);
+      if (seedBook && seedBook.images && seedBook.images.length > 0) {
+        updated = true;
+        return { ...b, images: seedBook.images };
+      }
+      return b;
+    });
+
+    if (updated || existingBooks.length === 0) {
+      this._set(this.storageKeys.books, existingBooks.length === 0 ? BookNestSeedData.books : newBooks);
+    }
+
+    const existingOrders = this._get(this.storageKeys.orders, []);
+    if (existingOrders.length > 0) {
+      const newOrders = existingOrders.map(o => {
+        if (o.items) {
+          o.items = o.items.map(item => {
+            const seedBook = seedBooksMap.get(item.bookId);
+            if (seedBook && seedBook.images && seedBook.images[0]) {
+              return { ...item, image: seedBook.images[0] };
+            }
+            return item;
+          });
+        }
+        return o;
+      });
+      this._set(this.storageKeys.orders, newOrders);
+    }
+
+    const existingRentals = this._get(this.storageKeys.rentals, []);
+    if (existingRentals.length > 0) {
+      const newRentals = existingRentals.map(r => {
+        const seedBook = seedBooksMap.get(r.bookId);
+        if (seedBook && seedBook.images && seedBook.images[0]) {
+          return { ...r, bookImage: seedBook.images[0] };
+        }
+        return r;
+      });
+      this._set(this.storageKeys.rentals, newRentals);
+    }
+    console.log('BookNest: Synced cover images with seed data.');
   },
 
   /**
@@ -38,7 +95,7 @@ const BookNestDataStore = {
     localStorage.setItem(this.storageKeys.orders, JSON.stringify(BookNestSeedData.orders));
     localStorage.setItem(this.storageKeys.rentals, JSON.stringify(BookNestSeedData.rentals));
     localStorage.setItem(this.storageKeys.cart, JSON.stringify({}));
-    localStorage.setItem(this.storageKeys.seeded, 'true');
+    localStorage.setItem(this.storageKeys.seeded, 'v2_covers');
     console.log('BookNest: Data store reset to initial seed data.');
   },
 

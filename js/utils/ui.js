@@ -164,6 +164,20 @@ const BookNestUI = {
   },
 
   /**
+   * Resolve cover image URL for both root and subfolder paths
+   */
+  resolveCoverUrl(url) {
+    if (!url) return '';
+    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) return url;
+    if (url.startsWith('/')) return url;
+    const path = window.location.pathname || '';
+    if (path.includes('/admin/') || path.endsWith('/admin')) {
+      return '/' + url;
+    }
+    return url;
+  },
+
+  /**
    * Generate Clean Academic Book Placeholder SVG
    */
   getBookPlaceholderSvg(title = 'Book', category = 'Academic') {

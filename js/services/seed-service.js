@@ -36,7 +36,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/data-structures-algorithms-made-easy.jpg'],
       createdAt: '2026-01-10T10:00:00Z',
       featured: true
     },
@@ -60,7 +60,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1532012164546-f432f2e3edd3?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/database-management-systems.jpg'],
       createdAt: '2026-01-12T11:30:00Z',
       featured: true
     },
@@ -84,7 +84,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/operating-system-concepts.jpg'],
       createdAt: '2026-01-14T09:15:00Z',
       featured: true
     },
@@ -108,7 +108,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/computer-networking-top-down.jpg'],
       createdAt: '2026-01-18T14:20:00Z',
       featured: true
     },
@@ -132,7 +132,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/python-crash-course.jpg'],
       createdAt: '2026-01-20T10:00:00Z',
       featured: true
     },
@@ -156,7 +156,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/core-java-volume-i.jpg'],
       createdAt: '2026-01-22T16:00:00Z',
       featured: false
     },
@@ -180,7 +180,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/full-stack-react-projects.jpg'],
       createdAt: '2026-01-25T13:45:00Z',
       featured: true
     },
@@ -204,7 +204,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/artificial-intelligence-modern-approach.jpg'],
       createdAt: '2026-01-28T09:00:00Z',
       featured: true
     },
@@ -228,7 +228,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/hands-on-machine-learning.jpg'],
       createdAt: '2026-02-01T11:20:00Z',
       featured: true
     },
@@ -252,7 +252,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/software-engineering-practitioners-approach.jpg'],
       createdAt: '2026-02-05T14:10:00Z',
       featured: false
     },
@@ -276,7 +276,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/principles-of-marketing.jpg'],
       createdAt: '2026-02-08T10:00:00Z',
       featured: false
     },
@@ -300,7 +300,7 @@ const BookNestSeedData = {
       sellerId: 'admin-1',
       sellerName: 'BookNest Campus Store',
       status: 'approved',
-      images: ['https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/financial-accounting-for-management.jpg'],
       createdAt: '2026-02-12T15:30:00Z',
       featured: false
     }
@@ -356,7 +356,7 @@ const BookNestSeedData = {
       rentalPrice: 75,
       quantity: 1,
       rentEnabled: true,
-      images: ['https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80'],
+      images: ['assets/images/covers/computer-networking-top-down.jpg'],
       status: 'pending',
       rejectionReason: '',
       createdAt: '2026-02-18T10:00:00Z',
@@ -382,7 +382,7 @@ const BookNestSeedData = {
           price: 499,
           quantity: 1,
           type: 'buy',
-          image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80'
+          image: 'assets/images/covers/data-structures-algorithms-made-easy.jpg'
         }
       ],
       subtotal: 499,
@@ -405,7 +405,7 @@ const BookNestSeedData = {
       bookId: 'book-3',
       bookTitle: 'Operating System Concepts (10th Edition)',
       bookAuthor: 'Abraham Silberschatz',
-      bookImage: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=600&q=80',
+      bookImage: 'assets/images/covers/operating-system-concepts.jpg',
       issueDate: '2026-02-01T10:00:00Z',
       dueDate: '2026-03-03T10:00:00Z',
       returnDate: null,
